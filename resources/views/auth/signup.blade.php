@@ -22,21 +22,21 @@
 					@endif
 				</div>
 				<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-					<label lass="control-label" for="username">Username</label>
+					<label class="control-label" for="username">Username</label>
 					<input class="form-control" type="text" name="username" id="username" placeholder="username" value="{{ Request::old('username') ?: '' }}">
 					@if ($errors->has('username'))
 						<span class="help-block">{{ $errors->first('username') }}</span>
 					@endif
 				</div>
 				<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-					<label lass="control-label" for="password">Password</label>
+					<label class="control-label" for="password">Password</label>
 					<input class="form-control" type="password" name="password" id="password">
 					@if ($errors->has('password'))
 						<span class="help-block">{{ $errors->first('password') }}</span>
 					@endif
 				</div>
 				<div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-					<label lass="control-label" for="password_confirmation">Confirm Password</label>
+					<label class="control-label" for="password_confirmation">Confirm Password</label>
 					<input class="form-control" type="password" name="password_confirmation" id="password_confirmation">
 					@if ($errors->has('password_confirmation'))
 						<span class="help-block">{{ $errors->first('password_confirmation') }}</span>

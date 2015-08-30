@@ -43,6 +43,11 @@ Route::get('/signin', [
 Route::post('/signin', [
 	'uses' => '\Prty\Http\Controllers\AuthController@postSignin',
 ]);
+// Set up a post route for Signing Out - See AuthController.php, method postSignout()
+Route::get('/signout', [
+	'uses' => '\Prty\Http\Controllers\AuthController@getSignout',
+	'as' => 'auth.signout',
+]);
 
 
 /**

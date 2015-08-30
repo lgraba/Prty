@@ -9,7 +9,7 @@
 		</div>
 		<div class="collapse navbar-collapse">
 
-			<!-- @if (Auth::check()) -->
+			@if (Auth::check())
 				<ul class="nav navbar-nav">
 					<li><a href="#">Timeline</a></li>
 					<li><a href="#">Friends</a></li>
@@ -22,18 +22,18 @@
 					</div>
 					<button class="btn btn-default" type="submit">Search</button>
 				</form>
-			<!-- @endif -->
+			@endif
 
 			<ul class="nav navbar-nav navbar-right">
 
-				<!-- @if (Auth::check()) -->
-					<li><a href="#">Logan<!-- {{ Auth::user()->getNameOrUsername() }} --></a></li>
+				@if (Auth::check())
+					<li><a href="#">{{ Auth::user()->getNameOrUsername() }}</a></li>
 					<li><a href="#">Change Profile</a></li>
-					<li><a href="#">Sign Out</a></li>
-				<!-- @else -->
+					<li><a href="{{ route('auth.signout') }}">Sign Out</a></li>
+				@else
 					<li><a href="{{ route('auth.signup') }}">Sign Up</a></li>
 					<li><a href="{{ route('auth.signin') }}">Sign In</a></li>
-				<!-- @endif -->
+				@endif
 				
 			</ul>
 

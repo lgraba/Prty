@@ -54,24 +54,35 @@ class AuthController extends Controller
 	{
 		// Validation via Laravel
 		$this->validate($request, [
-			'username' => 'required|exists:users',
+			'username' => 'required',
 			'password' => 'required',
 		]);
 
-		// Attempt to Sign the user in
-        if (Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
-        	// Redirect to destination the user was attempting to access before authentication check, otherwise home
-            return redirect()
-            	->route('home')
-            	->with('info', 'You are now signed in and ready to party!');
+		// Attempt to Sign the user in with username
+        if (!Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'))) {
+        	// Attempt to Sign the user in with Email
+	        if (!Auth::attempt(['email' => $request->input('username'), 'password' => $request->input('password')], $request->has('remember'))) {
+	        	// Redirect back to Sign In page if unable to authenticate user
+	        	return redirect()
+	            	->back()
+	            	->with('info', 'I can\'t let you into the party. Please check your credentials below... and show up with some girls next time.')
+	            	->with('username', $request->input('username'));
+        	}
         }
-        else {
-        	// Redirect back to Sign In page
-        	return redirect()
-            	->route('auth.signin')
-            	->with('info', 'I can\'t let you into the party. Please check your credentials below... and show up with some girls next time.')
-            	->with('username', $request->input('username'));
-        }
+        
 
+        // Redirect user home after successful authentication
+        return redirect()
+        	->route('home')
+        	->with('info', 'You are now signed in and ready to party!');
+
+	}
+
+	// For sign out
+	public function getSignout()
+	{
+		Auth::logout();
+
+		return redirect()->route('home')->with('info', 'You\'re leaving the party already, man? Alright, well you\'re logged out for now. Drive safely!');
 	}
 }

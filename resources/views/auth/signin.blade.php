@@ -15,18 +15,23 @@
 			<form class="form-vertical" role="form" method="post" action="{{ route('auth.signin') }}">
 
 				<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-					<label lass="control-label" for="username">Username</label>
-					<input class="form-control" type="text" name="username" id="username" placeholder="username" value="{{ Request::old('username') ?: Session::get('username') }}">
+					<label class="control-label" for="username">Username or Email</label>
+					<input class="form-control" type="text" name="username" id="username" placeholder="username/email" value="{{ Request::old('username') ?: Session::get('username') }}">
 					@if ($errors->has('username'))
 						<span class="help-block">{{ $errors->first('username') }}</span>
 					@endif
 				</div>
 				<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-					<label lass="control-label" for="password">Password</label>
+					<label class="control-label" for="password">Password</label>
 					<input class="form-control" type="password" name="password" id="password">
 					@if ($errors->has('password'))
 						<span class="help-block">{{ $errors->first('password') }}</span>
 					@endif
+				</div>
+				<div class="checkbox">
+					<label for="remember">
+						<input type="checkbox" name="remember" id="remember"> Remember Me
+					</label>
 				</div>
 
 				<div class="form-group">
