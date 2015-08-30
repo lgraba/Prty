@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => Prty\User::class,
+    'model' => Prty\Models\User\User::class,
 
     /*
     |--------------------------------------------------------------------------

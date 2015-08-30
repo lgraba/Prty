@@ -9,6 +9,8 @@ namespace Prty\Http\Controllers;
 use Prty\Models\User\User;
 // For type Request
 use Illuminate\Http\Request;
+// For Authentication upon Sign In
+use Auth;
 
 class AuthController extends Controller
 {
@@ -37,7 +39,39 @@ class AuthController extends Controller
 
 		// Redirect user to home with flash message
 		return redirect()
-			->route('home')
-			->with('info', 'Your account has been created. Grab a cold beer and your friends - It\'s time to party!');
+			->route('auth.signin')
+			->with('info', 'Your account has been created. Grab a cold beer and Sign In - It\'s time to party!');
+	}
+
+	// For get request to the Sign In page
+	public function getSignin()
+	{
+		return view('auth.signin');
+	}
+
+	// For post request from Sign In form page
+	public function postSignin(Request $request)
+	{
+		// Validation via Laravel
+		$this->validate($request, [
+			'username' => 'required|exists:users',
+			'password' => 'required',
+		]);
+
+		// Attempt to Sign the user in
+        if (Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
+        	// Redirect to destination the user was attempting to access before authentication check, otherwise home
+            return redirect()
+            	->route('home')
+            	->with('info', 'You are now signed in and ready to party!');
+        }
+        else {
+        	// Redirect back to Sign In page
+        	return redirect()
+            	->route('auth.signin')
+            	->with('info', 'I can\'t let you into the party. Please check your credentials below... and show up with some girls next time.')
+            	->with('username', $request->input('username'));
+        }
+
 	}
 }

@@ -25,14 +25,23 @@ Route::get('/', [
 /**
  * Authentication
  */
-// Set up a get route for signup page - See AuthController.php, method getSignup()
+// Set up a get route for Sign Up page - See AuthController.php, method getSignup()
 Route::get('/signup', [
 	'uses' => '\Prty\Http\Controllers\AuthController@getSignup',
 	'as' => 'auth.signup',
 ]);
-// Set up a post route for signup form handling - See AuthController.php, method postSignup()
+// Set up a post route for Sign Up form handling - See AuthController.php, method postSignup()
 Route::post('/signup', [
 	'uses' => '\Prty\Http\Controllers\AuthController@postSignup',
+]);
+// Set up a get route for Sign In page - See AuthController.php, method getSignin()
+Route::get('/signin', [
+	'uses' => '\Prty\Http\Controllers\AuthController@getSignin',
+	'as' => 'auth.signin',
+]);
+// Set up a post route for Sign In form handling - See AuthController.php, method postSignin()
+Route::post('/signin', [
+	'uses' => '\Prty\Http\Controllers\AuthController@postSignin',
 ]);
 
 
