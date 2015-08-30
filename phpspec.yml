@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Prty
+        psr4_prefix: Prty
+        src_path: app
