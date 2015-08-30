@@ -18,3 +18,9 @@ Route::get('/', [
 	'uses' => '\Prty\Http\Controllers\HomeController@index',
 	'as' => 'home',
 ]);
+
+// Test route for alerts!
+// Travel to prty.io/alert to see it in action
+Route::get('/alert', function () {
+	return redirect()->route('home')->with('info', 'This is a test alert!');
+});

@@ -13,8 +13,10 @@
 		<!-- Throw in the navigation -->
 		@include('templates.partials.navigation')
 
-		<!-- Got some main content here -->
 		<div class="container">
+			<!-- Got yer user alerts right here -->
+			@include('templates.partials.alerts')
+			<!-- Got some main content here -->
 			@yield('content')
 		</div>
 
