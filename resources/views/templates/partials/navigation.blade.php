@@ -5,7 +5,7 @@
 
 		<!-- Brand -->
 		<div class="navbar-header">
-			<a href="#" class="navbar-brand">Prty</a>
+			<a href="{{ route('home') }}" class="navbar-brand">Prty</a>
 		</div>
 		<div class="collapse navbar-collapse">
 
@@ -31,7 +31,7 @@
 					<li><a href="#">Change Profile</a></li>
 					<li><a href="#">Sign Out</a></li>
 				<!-- @else -->
-					<li><a href="#">Sign Up</a></li>
+					<li><a href="{{ route('auth.signup') }}">Sign Up</a></li>
 					<li><a href="#">Sign In</a></li>
 				<!-- @endif -->
 				

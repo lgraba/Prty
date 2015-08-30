@@ -7,6 +7,7 @@ namespace Prty\Http\Controllers;
 
 class HomeController extends Controller
 {
+	// Return view for index/Home Page
 	public function index()
 	{
 		return view('home');

@@ -13,14 +13,33 @@
 |
 */
 
-// Set up a route for home page - See HomeController.php, method index()
+/**
+ * Home
+ */
+// Set up a get route for home page - See HomeController.php, method index()
 Route::get('/', [
 	'uses' => '\Prty\Http\Controllers\HomeController@index',
 	'as' => 'home',
 ]);
 
-// Test route for alerts!
-// Travel to prty.io/alert to see it in action
+/**
+ * Authentication
+ */
+// Set up a get route for signup page - See AuthController.php, method getSignup()
+Route::get('/signup', [
+	'uses' => '\Prty\Http\Controllers\AuthController@getSignup',
+	'as' => 'auth.signup',
+]);
+// Set up a post route for signup form handling - See AuthController.php, method postSignup()
+Route::post('/signup', [
+	'uses' => '\Prty\Http\Controllers\AuthController@postSignup',
+]);
+
+
+/**
+ * Testing
+ */
+// Test route for alerts - travel to prty.io/alert to see it in action
 Route::get('/alert', function () {
 	return redirect()->route('home')->with('info', 'This is a test alert!');
 });
