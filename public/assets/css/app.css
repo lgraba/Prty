@@ -23,6 +23,11 @@ body:after {
     padding: 3px;
 }
 
-.user-info {
-    margin-top: 10px;
+.media-heading {
+    margin: .8rem 0;
+}
+
+.name {
+    margin-right: 2rem;
+    font-weight: bold;
 }

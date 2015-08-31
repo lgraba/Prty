@@ -5,13 +5,15 @@
 	<div class="media-body">
 		<h4 class="media-heading"><a href="{{ route('profile.index', ['username' => $user->username]) }}">{{ $user->username }}</a></h4>
 		<div class="user-info">
-			@if ($user->getName())
-				<p>{{ $user->getName() }}</p>
-			@endif
+			<p>
+				@if ($user->getName())
+					<span class="name">{{ $user->getName() }}</span>
+				@endif
 
-			@if ($user->location)
-				<p>{{ $user->location }}</p>
-			@endif
+				@if ($user->location)
+					<span class="location">{{ $user->location }}</span>
+				@endif
+			</p>
 		</div>
 	</div>
 </div>
