@@ -7,6 +7,9 @@
 			<!-- Latest compiled and minified Bootstrap CSS -->
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+			<!-- My CSS -->
+			<link rel="stylesheet" href="assets/css/app.css">
+
 		</head>
 	<body>
 

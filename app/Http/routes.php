@@ -25,23 +25,27 @@ Route::get('/', [
 /**
  * Authentication
  */
-// Set up a get route for Sign Up page - See AuthController.php, method getSignup()
+// Set up a get route for Sign Up page (for guest) - See AuthController.php, method getSignup()
 Route::get('/signup', [
 	'uses' => '\Prty\Http\Controllers\AuthController@getSignup',
 	'as' => 'auth.signup',
+	'middleware' => ['guest'],
 ]);
-// Set up a post route for Sign Up form handling - See AuthController.php, method postSignup()
+// Set up a post route for Sign Up form handling (for guest) - See AuthController.php, method postSignup()
 Route::post('/signup', [
 	'uses' => '\Prty\Http\Controllers\AuthController@postSignup',
+	'middleware' => ['guest'],
 ]);
-// Set up a get route for Sign In page - See AuthController.php, method getSignin()
+// Set up a get route for Sign In page (for guest) - See AuthController.php, method getSignin()
 Route::get('/signin', [
 	'uses' => '\Prty\Http\Controllers\AuthController@getSignin',
 	'as' => 'auth.signin',
+	'middleware' => ['guest'],
 ]);
-// Set up a post route for Sign In form handling - See AuthController.php, method postSignin()
+// Set up a post route for Sign In form handling (for guest) - See AuthController.php, method postSignin()
 Route::post('/signin', [
 	'uses' => '\Prty\Http\Controllers\AuthController@postSignin',
+	'middleware' => ['guest'],
 ]);
 // Set up a post route for Signing Out - See AuthController.php, method postSignout()
 Route::get('/signout', [
