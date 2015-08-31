@@ -16,7 +16,7 @@
 				</ul>
 
 				<!-- Search form -->
-				<form action="#" role="search" class="navbar-form navbar-left">
+				<form action="{{ route('search.results') }}" role="search" class="navbar-form navbar-left">
 					<div class="form-group">
 						<input class="form-control" type="text" name="query" id="query" placeholder="Find someone!">
 					</div>

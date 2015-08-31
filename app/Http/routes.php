@@ -53,6 +53,15 @@ Route::get('/signout', [
 	'as' => 'auth.signout',
 ]);
 
+/**
+ * Search
+ */
+// Set up a get route for Search (for Authenticated user) - See SearchController.php, method getResults()
+Route::get('/search', [
+	'uses' => '\Prty\Http\Controllers\SearchController@getResults',
+	'as' => 'search.results',
+]);
+
 
 /**
  * Testing

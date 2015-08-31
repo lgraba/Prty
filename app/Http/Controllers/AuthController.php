@@ -37,7 +37,7 @@ class AuthController extends Controller
 			'password' => bcrypt($request->input('password')),
 		]);
 
-		// Redirect user to home with flash message
+		// Redirect user to Sign In with flash message
 		return redirect()
 			->route('auth.signin')
 			->with('info', 'Your account has been created. Grab a cold beer and Sign In - It\'s time to party!');
@@ -74,7 +74,7 @@ class AuthController extends Controller
         // Redirect user home after successful authentication
         return redirect()
         	->route('home')
-        	->with('info', 'You are now signed in and ready to party!');
+        	->with('info', 'You are now signed in and ready to party! Cups are $5.');
 
 	}
 
@@ -83,6 +83,6 @@ class AuthController extends Controller
 	{
 		Auth::logout();
 
-		return redirect()->route('home')->with('info', 'You\'re leaving the party already, man? Alright, well you\'re logged out for now. Drive safely!');
+		return redirect()->route('home')->with('info', 'You\'re leaving the party already, man? Alright, well you\'re signed out for now. Drive safely!');
 	}
 }

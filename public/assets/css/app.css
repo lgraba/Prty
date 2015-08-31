@@ -15,3 +15,10 @@ body:after {
     opacity : 0.2;
     z-index: -1;
 }
+
+.userblock {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px;
+}
