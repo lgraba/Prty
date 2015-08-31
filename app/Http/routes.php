@@ -23,7 +23,7 @@ Route::get('/', [
 ]);
 
 /**
- * Assets
+ * Assets Route
  */
 // For inclusion of assets in link tags (CSS, JS, etc.) - No related controller
 Route::get('/assets', [
@@ -31,7 +31,7 @@ Route::get('/assets', [
 ]);
 
 /**
- * Authentication
+ * Authentication Routes
  */
 // Set up a get route for Sign Up page (for guest) - See AuthController.php, method getSignup()
 Route::get('/signup', [
@@ -62,7 +62,7 @@ Route::get('/signout', [
 ]);
 
 /**
- * Search
+ * Search Routes
  */
 // Set up a get route for Search (for Authenticated user) - See SearchController.php, method getResults()
 Route::get('/search', [
@@ -71,12 +71,23 @@ Route::get('/search', [
 ]);
 
 /**
- * User Profile
+ * User Profile Routes
  */
 // Set up get route for User Profile - See ProfileController.php, method getProfile()
 Route::get('/user/{username}', [
 	'uses' => '\Prty\Http\Controllers\ProfileController@getProfile',
 	'as' => 'profile.index',
+]);
+// Set up get route for User Profile Edit page - see ProfileController.php, method getEdit()
+Route::get('/profile/edit', [
+	'uses' => '\Prty\Http\Controllers\ProfileController@getEdit',
+	'as' => 'profile.edit',
+	'middleware' => ['auth'],
+]);
+// Set up post route for User Profile Edit page - see ProfileController.php, method postEdit()
+Route::post('/profile/edit', [
+	'uses' => '\Prty\Http\Controllers\ProfileController@postEdit',
+	'middleware' => ['auth'],
 ]);
 
 
