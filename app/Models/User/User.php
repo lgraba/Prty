@@ -73,4 +73,35 @@ class User extends Model implements AuthenticatableContract
         $emailHash = md5(strtolower(trim($this->email)));
         return "https://www.gravatar.com/avatar/$emailHash?d=mm&s=66";
     }
+
+    // The friends a given user has relationship
+    public function friendsOfMine()
+    {
+        // This ties it to the user model for relational mapping
+        // Pivot table: friends
+        // Matching them up by the user_id and friend_id
+        return $this->belongsToMany('Prty\Models\User\User', 'friends', 'user_id', 'friend_id');
+    }
+
+
+    // The users who have the given user as a friend relationship
+    public function friendOf()
+    {
+        // Note the user_id and friend_id locations are reversed from above
+        return $this->belongsToMany('Prty\Models\User\User', 'friends', 'friend_id', 'user_id');
+    }
+
+    public function friends()
+    {
+        // Only return back accepted friends
+        // Merge so that a given user is friends with me if I am friends with them and vice-versa.
+        return $this
+            ->friendsOfMine()
+            ->wherePivot('accepted', true)
+            ->get()
+            ->merge($this
+                ->friendOf()
+                ->wherePivot('accepted', true)
+                ->get());
+    }
 }

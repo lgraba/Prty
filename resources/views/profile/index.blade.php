@@ -8,7 +8,21 @@
 			<hr>
 		</div>
 		<div class="col-lg-4 col-lg-offset-3">
-			Here we'll have some friends listed along with any friend requests!
+			<h4>{{ $user->getFirstNameOrUsername() }}'s Friends</h4>
+
+			@if (!$user->friends()->count())
+				<p>
+					@if ($user == Auth::user())
+						You have no friends. Find some people to talk with!
+					@else
+						{{ $user->getFirstNameOrUsername() }} has no friends :-( Be his friend?
+					@endif
+				</p>
+			@else
+				@foreach ($user->friends() as $user)
+					@include('user.partials.userblock')
+				@endforeach
+			@endif
 		</div>
 	</div>
 @stop
