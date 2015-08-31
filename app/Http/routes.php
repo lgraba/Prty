@@ -23,6 +23,14 @@ Route::get('/', [
 ]);
 
 /**
+ * Assets
+ */
+// For inclusion of assets in link tags (CSS, JS, etc.) - No related controller
+Route::get('/assets', [
+	'as' => 'assets',
+]);
+
+/**
  * Authentication
  */
 // Set up a get route for Sign Up page (for guest) - See AuthController.php, method getSignup()
@@ -60,6 +68,15 @@ Route::get('/signout', [
 Route::get('/search', [
 	'uses' => '\Prty\Http\Controllers\SearchController@getResults',
 	'as' => 'search.results',
+]);
+
+/**
+ * User Profile
+ */
+// Set up get route for User Profile - See ProfileController.php, method getProfile()
+Route::get('/user/{username}', [
+	'uses' => '\Prty\Http\Controllers\ProfileController@getProfile',
+	'as' => 'profile.index',
 ]);
 
 

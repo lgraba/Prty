@@ -8,7 +8,7 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 			<!-- My CSS -->
-			<link rel="stylesheet" href="assets/css/app.css">
+			<link rel="stylesheet" href="{{ route('assets') }}/css/app.css">
 
 		</head>
 	<body>
