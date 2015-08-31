@@ -74,7 +74,7 @@ class User extends Model implements AuthenticatableContract
         return "https://www.gravatar.com/avatar/$emailHash?d=mm&s=66";
     }
 
-    // The friends a given user has relationship
+    // The friends a given user has - relationship
     public function friendsOfMine()
     {
         // This ties it to the user model for relational mapping
@@ -84,11 +84,11 @@ class User extends Model implements AuthenticatableContract
     }
 
 
-    // The users who have the given user as a friend relationship
+    // The users who have the given user as a friend - relationship
     public function friendOf()
     {
         // Note the user_id and friend_id locations are reversed from above
-        return $this->belongsToMany('Prty\Models\User\User', 'friends','user_id', 'friend_id');
+        return $this->belongsToMany('Prty\Models\User\User', 'friends' ,'user_id', 'friend_id');
     }
 
     // To return friends of the user

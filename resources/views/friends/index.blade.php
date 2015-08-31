@@ -15,12 +15,11 @@
 			@endif
 		</div>
 		<div class="col-lg-6">
-			<h4>Friend Requests</h4>
+			<h3>Friend Requests</h3>
 				@if (!$requests->count())
 					<p>You have no friend requests. Request some friends of your own?</p>
 				@else
 					@foreach ($requests as $user)
-						@if ($requested = true) @endif
 						@include('user.partials.userblock')
 					@endforeach
 				@endif

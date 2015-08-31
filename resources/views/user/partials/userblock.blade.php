@@ -14,8 +14,12 @@
 					<span class="location">{{ $user->location }}</span>
 				@endif
 
-				@if (isset($requested))
-					<span class="request pull-right"><a href="#">Accept Friend Request</a></span>
+				@if (Auth::user()->hasFriendRequestReceived($user))
+					<a class="pull-right" href="{{ route('friend.accept', ['username' => $user->username]) }}">
+						<button type="button" class="btn btn-primary btn-sm">
+							<span class="glyphicon glyphicon-ok" aria-hidden="true" alt="Accept Friend Request"></span> Accept Friend Request
+						</button>
+					</a>
 				@endif
 			</p>
 		</div>

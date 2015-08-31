@@ -13,14 +13,22 @@
 			@if (Auth::user()->hasFriendRequestPending($user))
 				<p class="name">Waiting for {{ $user->getFirstNameOrUsername() }} to accept your friend request.</p>
 				<hr>
-			@elseif (Auth::useR()->hasFriendRequestReceived($user))
-				<a class="btn btn-primary" href="#">Accept Friend Request</a>
+			@elseif (Auth::user()->hasFriendRequestReceived($user))
+				<a href="{{ route('friend.accept', ['username' => $user->username]) }}">
+					<button type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true" alt="Accept Friend Request"></span> Accept Friend Request
+					</button>
+				</a>
 				<hr>
 			@elseif (Auth::user()->isFriendsWith($user))
-				<p class="name">You and {{ $user->getFirstNameOrUsername() }} are friends!</p>
+				<p class="name"><span class="glyphicon glyphicon-heart-empty"></span> You and {{ $user->getFirstNameOrUsername() }} are friends!</p>
 				<hr>
-			@else
-				<a href="#" class="btn btn-primary">Add Friend</a>
+			@elseif (Auth::user() != $user)
+				<a href="{{ route('friend.add', ['username' => $user->username]) }}">
+					<button type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true" alt="Add Friend"></span> Add Friend
+					</button>
+				</a>
 				<hr>
 			@endif
 

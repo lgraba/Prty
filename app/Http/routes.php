@@ -99,7 +99,18 @@ Route::get('/friends', [
 	'as' => 'friends.index',
 	'middleware' => ['auth'],
 ]);
-
+// Set up a get route for Add Friend - see FriendController.php, method getAdd()
+Route::get('/friends/add/{username}', [
+	'uses' => '\Prty\Http\Controllers\FriendController@getAdd',
+	'as' => 'friend.add',
+	'middleware' => ['auth'],
+]);
+// Set up a get route for accepting friend request - see FriendController.php, method getAccept()
+Route::get('/friends/accept/{username}', [
+	'uses' => '\Prty\Http\Controllers\FriendController@getAccept',
+	'as' => 'friend.accept',
+	'middleware' => ['auth'],
+]);
 
 /**
  * Testing

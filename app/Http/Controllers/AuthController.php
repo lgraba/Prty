@@ -65,7 +65,7 @@ class AuthController extends Controller
 	        	// Redirect back to Sign In page if unable to authenticate user
 	        	return redirect()
 	            	->back()
-	            	->with('info', 'I can\'t let you into the party. Please check your credentials below... and show up with some girls next time.')
+	            	->with('danger', 'I can\'t let you into the party. Please check your credentials below... and show up with some girls next time.')
 	            	->with('username', $request->input('username'));
         	}
         }
