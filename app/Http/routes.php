@@ -113,6 +113,16 @@ Route::get('/friends/accept/{username}', [
 ]);
 
 /**
+ * Status Routes
+ */
+// Set up a post route for making a status - see StatusController.php, method postStatus()
+Route::post('/status', [
+	'uses' => '\Prty\Http\Controllers\StatusController@postStatus',
+	'as' => 'status.post',
+	'middleware' => ['auth'],
+]);
+
+/**
  * Testing
  */
 // Test route for alerts - travel to prty.io/alert to see it in action

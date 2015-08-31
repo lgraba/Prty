@@ -55,6 +55,10 @@ class User extends Model implements AuthenticatableContract
         return null;
     }
 
+    /**
+     * User
+     */
+
     // Return name or username
     public function getNameOrUsername()
     {
@@ -74,13 +78,28 @@ class User extends Model implements AuthenticatableContract
         return "https://www.gravatar.com/avatar/$emailHash?d=mm&s=66";
     }
 
+
+    /**
+     * Statuses
+     */
+    // Relate User and Status - foreign key (in statuses table) is 'user_id', which will be the id in users table
+    public function statuses()
+    {
+        return $this->hasMany('Prty\Models\Status\Status', 'user_id');
+    }
+
+
+    /**
+     * Friends
+     */
+
     // The friends a given user has - relationship
     public function friendsOfMine()
     {
         // This ties it to the user model for relational mapping
         // Pivot table: friends
         // Matching them up by the user_id and friend_id
-        return $this->belongsToMany('Prty\Models\User\User', 'friends', 'friend_id', 'user_id');
+        return $this->belongsToMany('Prty\Models\User\User', 'friends', 'friend_id', 'user_id')->withTimestamps();
     }
 
 
@@ -88,7 +107,7 @@ class User extends Model implements AuthenticatableContract
     public function friendOf()
     {
         // Note the user_id and friend_id locations are reversed from above
-        return $this->belongsToMany('Prty\Models\User\User', 'friends' ,'user_id', 'friend_id');
+        return $this->belongsToMany('Prty\Models\User\User', 'friends' ,'user_id', 'friend_id')->withTimestamps();
     }
 
     // To return friends of the user
