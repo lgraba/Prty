@@ -22,3 +22,7 @@ body:after {
     border-radius: 3px;
     padding: 3px;
 }
+
+.user-info {
+    margin-top: 10px;
+}
