@@ -31,3 +31,7 @@ body:after {
     margin-right: 2rem;
     font-weight: bold;
 }
+
+.request {
+    margin-right: 1rem;
+}

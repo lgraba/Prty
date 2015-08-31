@@ -80,7 +80,7 @@ class User extends Model implements AuthenticatableContract
         // This ties it to the user model for relational mapping
         // Pivot table: friends
         // Matching them up by the user_id and friend_id
-        return $this->belongsToMany('Prty\Models\User\User', 'friends', 'user_id', 'friend_id');
+        return $this->belongsToMany('Prty\Models\User\User', 'friends', 'friend_id', 'user_id');
     }
 
 
@@ -88,9 +88,10 @@ class User extends Model implements AuthenticatableContract
     public function friendOf()
     {
         // Note the user_id and friend_id locations are reversed from above
-        return $this->belongsToMany('Prty\Models\User\User', 'friends', 'friend_id', 'user_id');
+        return $this->belongsToMany('Prty\Models\User\User', 'friends','user_id', 'friend_id');
     }
 
+    // To return friends of the user
     public function friends()
     {
         // Only return back accepted friends
@@ -103,5 +104,11 @@ class User extends Model implements AuthenticatableContract
                 ->friendOf()
                 ->wherePivot('accepted', true)
                 ->get());
+    }
+
+    // To return friend requests of the user
+    public function friendRequests()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', false)->get();
     }
 }

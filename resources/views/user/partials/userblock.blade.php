@@ -13,6 +13,10 @@
 				@if ($user->location)
 					<span class="location">{{ $user->location }}</span>
 				@endif
+
+				@if (isset($requested))
+					<span class="request pull-right"><a href="#">Accept Friend Request</a></span>
+				@endif
 			</p>
 		</div>
 	</div>
