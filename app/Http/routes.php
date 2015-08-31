@@ -90,6 +90,16 @@ Route::post('/profile/edit', [
 	'middleware' => ['auth'],
 ]);
 
+/**
+ * Friends Routes
+ */
+// Set up a get route for Friend Index - see FriendController.php, method getIndex()
+Route::get('/friends', [
+	'uses' => '\Prty\Http\Controllers\FriendController@getIndex',
+	'as' => 'friends.index',
+	'middleware' => ['auth'],
+]);
+
 
 /**
  * Testing

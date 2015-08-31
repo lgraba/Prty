@@ -4,11 +4,9 @@
 
 @section('content')
 
-	<h3>Sign In to the Prty!</h3>
-
 	<div class="row">
 		<div class="col-lg-6">
-			
+			<h3>Sign In to the Prty!</h3>
 			<p>The keg is tapped, people are starting to show up, and the block is HOT. Where you at?</p>
 			
 			<!-- Sign In Form -->
