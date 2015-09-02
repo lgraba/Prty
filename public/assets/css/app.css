@@ -39,3 +39,10 @@ body:after {
 .status-info {
     margin-bottom: 2rem;
 }
+
+.white-bg {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}

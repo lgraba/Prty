@@ -15,8 +15,16 @@
 			</p>
 			<ul class="list-inline">
 				<li>4 days ago</li>
-				<li><a href="#">Big Up</a></li>
-				<li>3 Up</li>
+				<li>
+					<a href="#">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
+						</button>
+					</a>
+				</li>
+				<li>
+					3 <span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span>
+				</li>
 			</ul>
 
 			{{-- <div class="media">

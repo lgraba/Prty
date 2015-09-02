@@ -19,7 +19,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-5">
+		<div class="col-lg-6 white-bg">
 			<!-- Timeline statuses and replies -->
 			@if (!$statuses->count())
 				<p>No statuses in your timeline, yet!</p>
