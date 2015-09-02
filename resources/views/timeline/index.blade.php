@@ -21,13 +21,20 @@
 	<div class="row">
 		<div class="col-lg-5">
 			<!-- Timeline statuses and replies -->
-			@foreach ($statuses as $status)
-				<div class="row">
-					<div class="col-lg-12">
-						{{ $status->body }}
+			@if (!$statuses->count())
+				<p>No statuses in your timeline, yet!</p>
+			@else
+				@foreach ($statuses as $status)
+					<div class="row">
+						<div class="col-lg-12">
+							@include('timeline.partials.statusblock')
+						</div>
 					</div>
-				</div>
-			@endforeach
+				@endforeach
+
+				{!!  $statuses->render() !!}
+
+			@endif
 		</div>
 	</div>
 

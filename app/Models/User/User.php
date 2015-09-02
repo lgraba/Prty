@@ -72,10 +72,10 @@ class User extends Model implements AuthenticatableContract
     }
 
     // Return avatar URL (Gravatar)
-    public function getAvatarUrl()
+    public function getAvatarUrl($size)
     {
         $emailHash = md5(strtolower(trim($this->email)));
-        return "https://www.gravatar.com/avatar/$emailHash?d=mm&s=66";
+        return "https://www.gravatar.com/avatar/$emailHash?d=mm&s=$size";
     }
 
 

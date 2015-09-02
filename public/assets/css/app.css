@@ -35,3 +35,7 @@ body:after {
 .request {
     margin-right: 1rem;
 }
+
+.status-info {
+    margin-bottom: 2rem;
+}
