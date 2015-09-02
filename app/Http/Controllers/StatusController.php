@@ -65,4 +65,32 @@ class StatusController extends Controller
 		return redirect()->back()->with('info', 'Your reply has been posted!');
 
 	}
+
+	// Be able to like
+	public function getLike($statusId)
+	{
+		// Get the status by statusId
+		$status = Status::find($statusId);
+
+		// Check if there is no status with that id
+		if (!$status) {
+			return redirect()->route('home')->with('danger', 'Why are you trying to like something that doesn\'t exist?');
+		}
+
+		// Check user making like is friends with the user who owns the status
+		if (!Auth::user()->isFriendsWith($status->user)) {
+			return redirect()->route('home')->with('danger', 'Why are you trying to like someone\'s status that you aren\'t friends with?');
+		}
+
+		// Check whether they have already like the status with hasLikedStatus
+		if (Auth::user()->hasLikedStatus($status)) {
+			return redirect()->back()->with('info', 'You have already liked that status once!');
+		}
+
+		// Create the like and save it to current user likes
+		$like = $status->likes()->create([]);
+		Auth::user()->likes()->save($like);
+
+		return redirect()->back()->with('info', 'You have liked the status!');
+	}
 }

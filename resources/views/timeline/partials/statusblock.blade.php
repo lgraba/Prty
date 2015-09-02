@@ -17,7 +17,7 @@
 				<li>{{ $status->created_at->diffForHumans() }}</li>
 				@if ($status->user->id !== Auth::user()->id)
 					<li>
-						<a href="#">
+						<a href="{{ route('status.like', ['statusId' => $status->id]) }}">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
 							</button>
@@ -48,7 +48,7 @@
 							<li>{{ $reply->created_at->diffForHumans() }}</li>
 							@if ($reply->user->id !== Auth::user()->id)
 								<li>
-									<a href="#">
+									<a href="{{ route('status.like', ['statusId' => $reply->id]) }}">
 										<button type="button" class="btn btn-default btn-sm">
 											<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
 										</button>

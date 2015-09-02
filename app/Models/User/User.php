@@ -89,6 +89,23 @@ class User extends Model implements AuthenticatableContract
         return $this->hasMany('Prty\Models\Status\Status', 'user_id');
     }
 
+    // Likes
+    public function likes()
+    {
+        return $this->hasMany('Prty\Models\Likeable\Likeable', 'user_id');
+    }
+
+    // For liking a status
+    public function hasLikedStatus(Status $status)
+    {
+        // Select likes from a status for a particular user_id
+        return (bool) $status->likes
+            ->where('likeable_id', $status->id)
+            ->where('likeable_type', get_class($status))
+            ->where('user_id', $this->id)
+            ->count();
+    }
+
 
     /**
      * Friends
@@ -102,7 +119,6 @@ class User extends Model implements AuthenticatableContract
         // Matching them up by the user_id and friend_id
         return $this->belongsToMany('Prty\Models\User\User', 'friends', 'friend_id', 'user_id')->withTimestamps();
     }
-
 
     // The users who have the given user as a friend - relationship
     public function friendOf()
@@ -192,14 +208,4 @@ class User extends Model implements AuthenticatableContract
                         ->count();
     }
 
-    // For liking a status
-    public function hasLikedStatus(Status $status)
-    {
-        // Select likes from a status for a particular user_id
-        return (bool) $status->likes
-            ->where('likeable_id', $status->id)
-            ->where('likeable_type', get_class($status))
-            ->where('user_id', $this->id)
-            ->count();
-    }
 }

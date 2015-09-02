@@ -3,7 +3,7 @@
 // Likeable.php
 // A model for making any item likeable/votable
 
-namespace Ptry\Models\Likeable;
+namespace Prty\Models\Likeable;
 
 use Illuminate\Database\Eloquent\Model;
 
