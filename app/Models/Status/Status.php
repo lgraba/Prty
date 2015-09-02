@@ -34,4 +34,10 @@ class Status extends Model
 		// Each status has many replies, related by the parent_id
 		return $this->hasMany('Prty\Models\Status\Status', 'parent_id');
 	}
+
+	// Likes, Eyes, Upvotes, whatever
+	public function likes()
+	{
+		return $this->morphMany('Prty\Models\Likeable\Likeable', 'likeable');
+	}
 }
