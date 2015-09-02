@@ -15,7 +15,7 @@
 			</p>
 			<ul class="list-inline">
 				<li>{{ $status->created_at->diffForHumans() }}</li>
-				@if ($status->user->id !== Auth::user()->id)
+				@if ($status->user->id !== Auth::user()->id && !Auth::user()->hasLikedStatus($status) && Auth::user()->isFriendsWith($status->user))
 					<li>
 						<a href="{{ route('status.like', ['statusId' => $status->id]) }}">
 							<button type="button" class="btn btn-default btn-sm">
@@ -25,7 +25,7 @@
 					</li>
 				@endif
 				<li>
-					3 <span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span>
+					<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> {{ $status->likes->count() }}
 				</li>
 			</ul>
 
@@ -46,7 +46,7 @@
 
 						<ul class="list-inline">
 							<li>{{ $reply->created_at->diffForHumans() }}</li>
-							@if ($reply->user->id !== Auth::user()->id)
+							@if ($reply->user->id !== Auth::user()->id && !Auth::user()->hasLikedStatus($reply) && Auth::user()->isFriendsWith($reply->user))
 								<li>
 									<a href="{{ route('status.like', ['statusId' => $reply->id]) }}">
 										<button type="button" class="btn btn-default btn-sm">
@@ -56,7 +56,7 @@
 								</li>
 							@endif
 							<li>
-								3 <span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span>
+								<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> {{ $reply->likes->count() }}
 							</li>
 						</ul>
 
