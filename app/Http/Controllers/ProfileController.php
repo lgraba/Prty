@@ -23,9 +23,14 @@ class ProfileController extends Controller
 		if (!$user) {
 			abort(404);
 		}
-		// Return Profile Index View with User Details
+
+		// Grab statuses for the user
+		$statuses = $user->statuses()->notReply()->get();
+
+		// Return Profile Index View with User Details and Statuses
 		return view('profile.index')
-			->with('user', $user);
+			->with('user', $user)
+			->with('statuses', $statuses);
 	}
 
 	// Get the Profile Edit form

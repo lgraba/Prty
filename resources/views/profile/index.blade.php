@@ -6,6 +6,24 @@
 			<h3>{{ $user->username }}'s Profile</h3>
 			@include('user.partials.userblock')
 			<hr>
+
+			<div class="row">
+				<div class="col-lg-12 white-bg">
+					<!-- Timeline statuses and replies -->
+					@if (!$statuses->count())
+						<p>{{ $user->getFirstNameOrUsername() }} hasn't posted anything, yet!</p>
+					@else
+						@foreach ($statuses as $status)
+							<div class="row">
+								<div class="col-lg-12">
+									@include('timeline.partials.statusblock')
+								</div>
+							</div>
+						@endforeach
+					@endif
+				</div>
+			</div>
+
 		</div>
 		<div class="col-lg-4 col-lg-offset-3">
 
