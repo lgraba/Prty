@@ -104,6 +104,9 @@ class User extends Model implements AuthenticatableContract
             ->where('likeable_type', get_class($status))
             ->where('user_id', $this->id)
             ->count();
+
+        // ALTERNATE
+        // return (bool) $status->likes->where('user_id', $this->id)->count();
     }
 
 
