@@ -21,6 +21,13 @@
 	<div class="row">
 		<div class="col-lg-5">
 			<!-- Timeline statuses and replies -->
+			@foreach ($statuses as $status)
+				<div class="row">
+					<div class="col-lg-12">
+						{{ $status->body }}
+					</div>
+				</div>
+			@endforeach
 		</div>
 	</div>
 
