@@ -2,6 +2,7 @@
 
 namespace Prty\Models\User;
 
+use Prty\Models\Status\Status;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -189,5 +190,16 @@ class User extends Model implements AuthenticatableContract
                         ->friends()
                         ->where('id', $user->id)
                         ->count();
+    }
+
+    // For liking a status
+    public function hasLikedStatus(Status $status)
+    {
+        // Select likes from a status for a particular user_id
+        return (bool) $status->likes
+            ->where('likeable_id', $status->id)
+            ->where('likeable_type', get_class($status))
+            ->where('user_id', $this->id)
+            ->count();
     }
 }

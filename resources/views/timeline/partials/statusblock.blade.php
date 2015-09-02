@@ -15,13 +15,15 @@
 			</p>
 			<ul class="list-inline">
 				<li>{{ $status->created_at->diffForHumans() }}</li>
-				<li>
-					<a href="#">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
-						</button>
-					</a>
-				</li>
+				@if ($status->user->id !== Auth::user()->id)
+					<li>
+						<a href="#">
+							<button type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
+							</button>
+						</a>
+					</li>
+				@endif
 				<li>
 					3 <span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span>
 				</li>
@@ -44,13 +46,15 @@
 
 						<ul class="list-inline">
 							<li>{{ $reply->created_at->diffForHumans() }}</li>
-							<li>
-								<a href="#">
-									<button type="button" class="btn btn-default btn-sm">
-										<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
-									</button>
-								</a>
-							</li>
+							@if ($reply->user->id !== Auth::user()->id)
+								<li>
+									<a href="#">
+										<button type="button" class="btn btn-default btn-sm">
+											<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
+										</button>
+									</a>
+								</li>
+							@endif
 							<li>
 								3 <span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span>
 							</li>
