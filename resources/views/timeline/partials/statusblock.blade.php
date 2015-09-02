@@ -42,11 +42,15 @@
 				</div>
 			</div> --}}
 
-			<form role="form" action="#" method="post">
-				<div class="form-group">
-					<textarea class="form-control" name="reply-1" id="reply-1" rows="2" placeholder="Reply to this status!"></textarea>
+			<form role="form" action="{{ route('status.reply', ['statusId' => $status->id]) }}" method="post">
+				<div class="form-group{{ $errors->has("reply-{$status->id}") ? ' has-error' : '' }}">
+					<textarea class="form-control" name="reply-{{ $status->id }}" id="reply-{{ $status->id }}" rows="2" placeholder="Reply to this status!">{{ trim(Request::old("reply-{$status->id}")) ?: '' }}</textarea>
+					@if ($errors->has("reply-{$status->id}"))
+						<span class="help-block">{{ $errors->first("reply-{$status->id}") }}</span>
+					@endif
 				</div>
 				<input class="btn btn-default btn-sm" type="submit" value="Reply">
+				<input type="hidden" name="_token" value="{{ Session::token() }}">
 			</form>
 
 		</div>

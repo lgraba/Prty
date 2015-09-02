@@ -121,6 +121,12 @@ Route::post('/status', [
 	'as' => 'status.post',
 	'middleware' => ['auth'],
 ]);
+// Set up a post route for replying to a status - see StatusController.php, method postReply()
+Route::post('/status/{statusId}/reply', [
+	'uses' => '\Prty\Http\Controllers\StatusController@postReply',
+	'as' => 'status.reply',
+	'middleware' => ['auth'],
+]);
 
 /**
  * Testing

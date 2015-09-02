@@ -18,8 +18,8 @@ class HomeController extends Controller
 		// If the user is authenticated, show Timeline view
 		if (Auth::check()) {
 
-			// Pull in statuses of the authenticated user + the authenticated user's friends
-			$statuses = Status::where(function($query) {
+			// Pull in primary statuses of the authenticated user + the authenticated user's friends
+			$statuses = Status::notReply()->where(function($query) {
 				return $query
 					->where('user_id', Auth::user()->id)
 					->orWhereIn('user_id', Auth::user()->friends()->lists('id'));
