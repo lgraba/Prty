@@ -5,7 +5,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-lg-6">
-			<h3>Change Your Profile Details</h3>
+			<span class="top-title"><h2>Change Your Profile Details</h2></span>
 			<form class="form-vertical" role="form" action="{{ route('profile.edit') }}" method="post">
 				<div class="row">
 					<div class="col-lg-12">

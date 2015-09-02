@@ -16,6 +16,12 @@
 			</form>
 			<hr>
 		</div>
+
+		<!-- Right Side title on Timeline -->
+		<div class="col-lg-4 col-lg-offset-2">
+			<span class="top-title"><h2>Welcome to the Party!</h2></span> Find, make, and party with friends!
+		</div>
+
 	</div>
 
 	<div class="row">

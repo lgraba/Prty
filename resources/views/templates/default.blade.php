@@ -7,6 +7,9 @@
 			<!-- Latest compiled and minified Bootstrap CSS -->
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+			<!-- Google Fonts -->
+			<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
 			<!-- My CSS -->
 			<link rel="stylesheet" href="{{ route('assets') }}/css/app.css">
 

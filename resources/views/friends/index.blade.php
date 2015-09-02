@@ -5,7 +5,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-lg-6">
-			<h3>Your Friends</h3>
+			<span class="top-title"><h2>Your Friends</h2></span>
 			@if (!$friends->count())
 				<p>You have no friends. There are some hot people available via the search box above...</p>
 			@else
@@ -15,7 +15,7 @@
 			@endif
 		</div>
 		<div class="col-lg-6">
-			<h3>Friend Requests</h3>
+			<span class="top-title"><h2>Friend Requests</h2></span>
 				@if (!$requests->count())
 					<p>You have no friend requests. Request some friends of your own?</p>
 				@else

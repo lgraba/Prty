@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-lg-5">
-			<h3>{{ $user->username }}'s Profile</h3>
+			<span class="top-title"><h2>{{ $user->username }}'s Profile</h2></span>
 			@include('user.partials.userblock')
 			<hr>
 
@@ -52,7 +52,7 @@
 
 
 
-			<h4>{{ $user->getFirstNameOrUsername() }}'s Friends</h4>
+			<span class="top-title"><h3>{{ $user->getFirstNameOrUsername() }}'s Friends</h3></span>
 
 			@if (!$user->friends()->count())
 				<p>

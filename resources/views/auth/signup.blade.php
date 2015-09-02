@@ -6,7 +6,7 @@
 
 	<div class="row">
 		<div class="col-lg-6">
-			<h3>Sign Up for the Prty!</h3>
+			<span class="top-title"><h2>Sign Up for the Prty!</h2></span>
 			<p>A good party has exquisitely interesting people in attendance. Make sure you're there to uniquely add your own to the gathering!</p>
 			
 			<!-- Sign Up Form -->
