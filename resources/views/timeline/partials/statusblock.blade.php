@@ -27,20 +27,39 @@
 				</li>
 			</ul>
 
-			{{-- <div class="media">
-				<a href="#" class="pull-left">
-					<img src="#" alt="" class="media-object">
-				</a>
-				<div class="media-body">
-					<h5 class="media-heading"><a href="#">Billy</a></h5>
-					<p>This is a response status.</p>
-					<ul class="list-inline">
-						<li>10 minutes ago</li>
-						<li><a href="#">Like</a></li>
-						<li>2 Likes</li>
-					</ul>
+			@foreach ($status->replies as $reply)
+
+				<div class="media">
+					<a href="{{ route('profile.index', ['username' => $reply->user->username]) }}" class="pull-left">
+						<img src="{{ $reply->user->getAvatarUrl(32) }}" alt="{{ $reply->user->getNameOrUsername() }}" class="media-object">
+					</a>
+					<div class="media-body">
+						<ul class="list-inline">
+							<li><h4 class="media-heading"><a href="{{ route('profile.index', ['username' => $reply->user->username]) }}">{{ $reply->user->username }}</a></h4></li>
+							<li class="name">{{ $reply->user->getName() }}</li>
+							<li>{{ $reply->user->location }}</li>
+						</ul>
+
+						<p>{{ $reply->body }}</p>
+
+						<ul class="list-inline">
+							<li>4 days ago</li>
+							<li>
+								<a href="#">
+									<button type="button" class="btn btn-default btn-sm">
+										<span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span> Eye It
+									</button>
+								</a>
+							</li>
+							<li>
+								3 <span class="glyphicon glyphicon-eye-open" aria-hidden="true" alt="Eye It"></span>
+							</li>
+						</ul>
+
+					</div>
 				</div>
-			</div> --}}
+				
+			@endforeach
 
 			<form role="form" action="{{ route('status.reply', ['statusId' => $status->id]) }}" method="post">
 				<div class="form-group{{ $errors->has("reply-{$status->id}") ? ' has-error' : '' }}">
