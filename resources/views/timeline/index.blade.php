@@ -19,7 +19,7 @@
 
 		<!-- Right Side title on Timeline -->
 		<div class="col-lg-4 col-lg-offset-2">
-			<span class="top-title"><h2>Welcome to the Party!</h2></span> Find, make, and party with friends!
+			<span class="top-title"><h1>Welcome to the Party!</h1></span> <center>Throw a party and they will come.</center>
 		</div>
 
 	</div>
